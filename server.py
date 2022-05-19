@@ -20,7 +20,7 @@ class GISModule(GISModuleServicer):
   def __init__(self) -> None:
       super().__init__()
 
-  def RunCreateNetwork(self, request: CreateNetworkInput, context) -> CreateNetworkOutput:
+  def create_network(self, request: CreateNetworkInput, context) -> CreateNetworkOutput:
     input_dict = {
       "platform" : jsonpickle.decode(request.platform),
       "cf-module": jsonpickle.decode(request.cf_module),
@@ -34,7 +34,7 @@ class GISModule(GISModuleServicer):
       n_supply_dict = jsonpickle.encode(output['n_supply_dict'], unpicklable=True),
     )
 
-  def RunOptimizeNetwork(self, request:OptimizeNetworkInput, context) -> OptimizeNetworkOutput:
+  def optimize_network(self, request:OptimizeNetworkInput, context) -> OptimizeNetworkOutput:
     input_dict = {
       "platform" : jsonpickle.decode(request.platform),
       "cf-module": jsonpickle.decode(request.cf_module),
