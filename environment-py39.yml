@@ -28,3 +28,4 @@ dependencies:
     - grpcio==1.44.0
     - protobuf==3.20.1
     - python-dotenv==0.20.0
+    - gurobipy==9.5.1
