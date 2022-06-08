@@ -33,7 +33,7 @@ WORKDIR /app
 COPY . .
 
 ENV PYTHONPATH=ms-grpc/plibs:module
-ENV GRB_LICENSE_FILE=gurobi.li
+ENV GRB_LICENSE_FILE=gurobi.lic
 
 EXPOSE 50052
 
