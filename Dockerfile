@@ -1,4 +1,4 @@
-FROM embers-base:latest as build
+FROM ghcr.io/emb3rs-project/embers-base:latest as build
 
 # creating the environment
 COPY environment-py39.yml .
