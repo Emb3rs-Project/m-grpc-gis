@@ -24,6 +24,7 @@ dependencies:
   - geopandas=
   - shapely=
   - networkx=
+  - jinja2=
   - pip:
     - grpcio==1.44.0
     - protobuf==3.20.1
