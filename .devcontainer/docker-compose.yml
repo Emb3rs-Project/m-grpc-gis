@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  gis:
+    build: 
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        - NODE_VERSION=none
+    image: embers/m-grpc-gis
+    volumes:
+      - ..:/workspaces/ms-grpc-gis
+
+    command: sleep infinity
+
+    networks:
+      - embers
+    
+networks:
+    embers:
+        driver: bridge
