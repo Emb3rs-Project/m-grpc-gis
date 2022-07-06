@@ -31,9 +31,10 @@ class GISModule(GISModuleServicer):
     output = run_create_network(input_data=input_dict, KB=KB(data=kb))
 
     return CreateNetworkOutput(
-      road_nw = json.dumps(output['road_nw']),
-      n_demand_dict = json.dumps(output['n_demand_dict']),
-      n_supply_dict = json.dumps(output['n_supply_dict']),
+      nodes = json.dumps(output['nodes']),
+      edges = json.dumps(output['edges']),
+      demand_list = json.dumps(output['demand_list']),
+      supply_list = json.dumps(output['supply_list']),
     )
 
   def optimize_network(self, request:OptimizeNetworkInput, context) -> OptimizeNetworkOutput:
@@ -54,6 +55,7 @@ class GISModule(GISModuleServicer):
       potential_edges = json.dumps(output['potential_edges']),
       potential_nodes = json.dumps(output['potential_nodes']),
       selected_agents = json.dumps(output['selected_agents']),
+      report = output['report'],
     )
 
 

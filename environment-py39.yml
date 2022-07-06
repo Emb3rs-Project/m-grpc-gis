@@ -6,8 +6,8 @@ dependencies:
   - python=3.9
   - pip=
   - colorama=
-  - numpy=
-  - pandas=
+  - numpy=1.22.4
+  - pandas=1.4.1
   - geopy=
   - pvlib-python=
   - urllib3=
@@ -16,14 +16,14 @@ dependencies:
   - requests=
   - pydantic=
   - jsonpickle
-  - osmnx=
+  - osmnx=1.1.2
   - scikit-learn=
   - pyomo=5.7
   - haversine=
   - folium=
-  - geopandas=
+  - geopandas=0.10.2
   - shapely=
-  - networkx=
+  - networkx=2.7.1
   - jinja2=
   - pip:
     - grpcio==1.44.0
