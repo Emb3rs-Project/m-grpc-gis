@@ -9,7 +9,7 @@ services:
         - NODE_VERSION=none
     image: embers/m-grpc-gis
     volumes:
-      - ..:/workspaces/ms-grpc-gis
+      - ..:/workspaces/m-grpc-gis
 
     command: sleep infinity
 
