@@ -38,5 +38,7 @@ ENV GRB_LICENSE_FILE=gurobi.lic
 EXPOSE 50052
 
 SHELL [ "/bin/bash", "-c" ]
+RUN echo 'source /venv/bin/activate' >> ~/.bashrc && source ~/.bashrc
+
 ENTRYPOINT source /venv/bin/activate && \
     python -u server.py

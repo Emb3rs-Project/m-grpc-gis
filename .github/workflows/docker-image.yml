@@ -1,12 +1,10 @@
-name: Docker Image CI
+name: Create and Publish a Docker Image in GHCR
 
 on:
   push:
     branches:
-      - "release"
-  pull_request:
-    branches:
-      - "release"
+      - "qa"
+      - "main"
 
 env:
   REGISTRY: ghcr.io
@@ -14,17 +12,17 @@ env:
   CTR_USER: ${{ secrets.CTR_USER }}
   CTR_TOKEN: ${{ secrets.CTR_TOKEN }}
 
-
 jobs:
-
-  build:
-    runs-on: ubuntu-latest
+  build-and-push-image:
+    runs-on: ubuntu-22.04
 
     steps:
-      - name: Checking out Repo
+      - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          submodules: true
 
-      - name: Log in to the Container Registry
+      - name: Login to the Container Registry
         uses: docker/login-action@v2.0.0
         with:
           registry: ${{ env.REGISTRY }}
@@ -37,10 +35,10 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Build and push Docker images
+      - name: Build and Push Docker image
         uses: docker/build-push-action@v3
         with:
-          push: true
           context: .
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
