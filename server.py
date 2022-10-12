@@ -47,6 +47,7 @@ class GISModule(GISModuleServicer):
             potential_edges=json.dumps(output['potential_edges']),
             potential_nodes=json.dumps(output['potential_nodes']),
             selected_agents=json.dumps(output['selected_agents']),
+            names_dict=json.dumps(output['names_dict']),
             report=output['report'],
         )
 
