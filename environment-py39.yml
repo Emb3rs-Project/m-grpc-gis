@@ -25,6 +25,7 @@ dependencies:
   - shapely=
   - networkx=2.7.1
   - jinja2=
+  - pyscipopt=4.2.0
   - pip:
     - grpcio==1.44.0
     - protobuf==3.20.1
