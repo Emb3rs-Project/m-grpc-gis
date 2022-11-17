@@ -18,7 +18,7 @@ dependencies:
   - jsonpickle
   - osmnx=1.1.2
   - scikit-learn=
-  - pyomo=5.7
+  - pyomo=6.4.2
   - haversine=
   - folium=
   - geopandas=0.10.2
