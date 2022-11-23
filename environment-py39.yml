@@ -15,10 +15,10 @@ dependencies:
   - matplotlib=
   - requests=
   - pydantic=
-  - jsonpickle
+  - jsonpickle=
   - osmnx=1.1.2
   - scikit-learn=
-  - pyomo=6.4.2
+#  - pyomo=6.4.2
   - haversine=
   - folium=
   - geopandas=0.10.2
@@ -30,4 +30,6 @@ dependencies:
     - grpcio==1.44.0
     - protobuf==3.20.1
     - python-dotenv==0.20.0
+    - git+https://github.com/Pyomo/pyomo
     - gurobipy==9.5.1
+    - highspy
