@@ -54,9 +54,10 @@ ENV COPT_LICENSE_FILE=copt.lic \
     LD_LIBRARY_PATH=$COPT_HOME/lib:$LD_LIBRARY_PATH \
     PYTHONPATH=$PYTHONPATH:$COPT_HOME/lib/pyomo
 
-RUN test -n $COPT_KEY && copt_licgen -key $COPT_KEY || copt_licgen -file $COPT_LICENSE_FILE
+RUN test ! -z "$COPT_KEY" && copt_licgen -key $COPT_KEY || copt_licgen -file $COPT_LICENSE_FILE
 COPY ./license.* .
 
+# Expose PORT and activate venv
 EXPOSE 50052
 
 SHELL [ "/bin/bash", "-c" ]
