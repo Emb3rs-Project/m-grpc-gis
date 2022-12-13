@@ -18,11 +18,11 @@ dependencies:
   - jsonpickle=
   - osmnx=1.1.2
   - scikit-learn=
-#  - pyomo=6.4.2
+  - pyomo=6.4.4
   - haversine=
   - folium=
   - geopandas=0.10.2
-  - shapely=
+  - shapely=1.8.0
   - networkx=2.7.1
   - jinja2=
   - pyscipopt=4.2.0
@@ -30,6 +30,6 @@ dependencies:
     - grpcio==1.44.0
     - protobuf==3.20.1
     - python-dotenv==0.20.0
-    - git+https://github.com/Pyomo/pyomo
     - gurobipy==9.5.1
     - highspy
+    - coptpy
