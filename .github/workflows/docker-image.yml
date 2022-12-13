@@ -5,7 +5,7 @@ on:
     branches:
       - "dev"
       - "qa"
-      - "main"
+      - "master"
 
 env:
   REGISTRY: ghcr.io
@@ -45,5 +45,5 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            BASE_TAG=${{ github.ref_name == 'main' && 'master' || github.ref_name }}
+            BASE_TAG=${{ github.ref_name }}
             COPT_KEY=${{ env.COPT_KEY }}
