@@ -54,9 +54,7 @@ ENV COPT_LICENSE_FILE=copt.lic \
     LD_LIBRARY_PATH=$COPT_HOME/lib:$LD_LIBRARY_PATH \
     PYTHONPATH=$PYTHONPATH:$COPT_HOME/lib/pyomo
 
-RUN if [[ -z "$COPT_KEY" ]] ; \
-    then copt_licgen -key $COPT_KEY ; \
-    else copt_licgen -file $COPT_LICENSE_FILE ; fi
+RUN if [[ -n "$COPT_KEY" ]] ; then copt_licgen -key $COPT_KEY ; else copt_licgen -file $COPT_LICENSE_FILE ; fi
 
 EXPOSE 50052
 
