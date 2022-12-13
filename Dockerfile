@@ -21,6 +21,8 @@ RUN /venv/bin/conda-unpack
 
 FROM python:3.10-slim as runtime
 
+ARG COPT_KEY
+
 # setup config
 ENV GROUP_ID=1000 \
     USER_ID=1000
@@ -52,7 +54,9 @@ ENV COPT_LICENSE_FILE=copt.lic \
     LD_LIBRARY_PATH=$COPT_HOME/lib:$LD_LIBRARY_PATH \
     PYTHONPATH=$PYTHONPATH:$COPT_HOME/lib/pyomo
 
-RUN copt_licgen -file $COPT_LICENSE_FILE
+RUN if [[ -z "$COPT_KEY" ]] ; \
+    then copt_licgen -key $COPT_KEY ; \
+    else copt_licgen -file $COPT_LICENSE_FILE ; fi
 
 EXPOSE 50052
 
