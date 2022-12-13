@@ -44,4 +44,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            BASE_TAG=${{ github.ref == 'main' && 'master' || github.ref }}
+            BASE_TAG=${{ github.ref_name == 'main' && 'master' || github.ref_name }}
