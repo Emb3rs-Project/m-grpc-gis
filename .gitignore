@@ -142,4 +142,8 @@ cython_debug/
 .idea
 
 # Others
+cache/
 gurobi.lic
+copt.lic
+license.key
+license.dat

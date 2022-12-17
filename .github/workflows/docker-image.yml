@@ -3,14 +3,16 @@ name: Create and Publish a Docker Image in GHCR
 on:
   push:
     branches:
+      - "dev"
       - "qa"
-      - "main"
+      - "master"
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   CTR_USER: ${{ secrets.CTR_USER }}
   CTR_TOKEN: ${{ secrets.CTR_TOKEN }}
+  COPT_KEY: ${{ secrets.COPT_KEY }}
 
 jobs:
   build-and-push-image:
@@ -42,3 +44,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            BASE_TAG=${{ github.ref_name }}
+            COPT_KEY=${{ env.COPT_KEY }}
