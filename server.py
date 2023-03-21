@@ -16,7 +16,7 @@ from module.utilities.kb import KB
 from module.utilities.kb_data import kb
 
 dotenv.load_dotenv()
-PROJECT_PATH = str(Path.cwd().parent)
+PROJECT_PATH = str(Path.cwd())
 
 
 class GISModule(GISModuleServicer):
