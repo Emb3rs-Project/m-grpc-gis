@@ -1,10 +1,13 @@
 import json
 import os
 from concurrent import futures
+from pathlib import Path
 
 import dotenv
 import grpc
 import jsonpickle
+
+from base.wrappers import SimulationWrapper
 from gis.gis_pb2 import CreateNetworkInput, CreateNetworkOutput, OptimizeNetworkInput, OptimizeNetworkOutput
 from gis.gis_pb2_grpc import GISModuleServicer, add_GISModuleServicer_to_server
 from module.functions.create_network import run_create_network
@@ -13,6 +16,7 @@ from module.utilities.kb import KB
 from module.utilities.kb_data import kb
 
 dotenv.load_dotenv()
+PROJECT_PATH = str(Path.cwd())
 
 
 class GISModule(GISModuleServicer):
@@ -22,7 +26,8 @@ class GISModule(GISModuleServicer):
             "cf-module": jsonpickle.decode(request.cf_module),
             "teo-module": jsonpickle.decode(request.teo_module)
         }
-        output = run_create_network(input_data=input_dict, KB=KB(data=kb))
+        with SimulationWrapper(project_path=PROJECT_PATH):
+            output = run_create_network(input_data=input_dict, KB=KB(data=kb))
         return CreateNetworkOutput(
             nodes=json.dumps(output['nodes']),
             edges=json.dumps(output['edges']),
@@ -37,7 +42,8 @@ class GISModule(GISModuleServicer):
             "teo-module": jsonpickle.decode(request.teo_module),
             "gis-module": jsonpickle.decode(request.gis_module),
         }
-        output = run_optimize_network(input_data=input_dict, KB=KB(data=kb))
+        with SimulationWrapper(project_path=PROJECT_PATH):
+            output = run_optimize_network(input_data=input_dict, KB=KB(data=kb))
         return OptimizeNetworkOutput(
             res_sources_sinks=json.dumps(output['res_sources_sinks']),
             sums=json.dumps(output['sums']),
